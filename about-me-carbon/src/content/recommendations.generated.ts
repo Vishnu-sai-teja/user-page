@@ -307,7 +307,7 @@ export const recommendationsPageData: RecommendationsPageData = {
       "creator": null,
       "year": null,
       "description": "Game of Thrones is an American fantasy drama television series created by David Benioff and D. B.",
-      "imageUrl": null,
+      "imageUrl": "/recommendations/movie-game-of-thrones-tv-series.webp",
       "sourceUrl": "https://en.wikipedia.org/wiki/Game_of_Thrones",
       "metadata": [
         {

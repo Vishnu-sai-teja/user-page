@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "generate:recommendations": "tsx scripts/generate-recommendations.ts",
-    "build": "npm run generate:recommendations && vite build",
+    "build": "npm run generate:recommendations && vite build && mkdir -p dist/about dist/projects dist/recommendations dist/contact && cp dist/index.html dist/about/index.html && cp dist/index.html dist/projects/index.html && cp dist/index.html dist/recommendations/index.html && cp dist/index.html dist/contact/index.html",
     "test": "vitest run --coverage"
   },
   "dependencies": {
