@@ -94,13 +94,11 @@ export const siteContent: SiteContent = {
     { label: "Projects", href: "/projects" }
   ],
   homeOrientation: [
-    "About is the narrative route. It turns the resume facts into a clearer story about how Vishnu thinks, what he optimizes for, and the roles that shaped that perspective.",
-    "Projects is the build log. It focuses on the work that best represents Vishnu's approach to orchestration, generation workflows, and model quality.",
-    "Contact stays intentionally direct: email for the fastest route, with GitHub, LinkedIn, and Kaggle available for more context and follow-up.",
-    "The site is deliberately compact. A recruiter or collaborator should be able to scan it quickly and still leave with a credible picture of the work."
+    "About — Vishnu's story, work history, and what connects the roles.",
+    "Projects — featured builds across agent systems, OCR pipelines, and generative models.",
+    "Contact — email is the fastest path; GitHub, LinkedIn, and Kaggle add context."
   ],
-  homeMaintenanceNote:
-    "Built as a Carbon-backed editorial profile that favors route clarity, readable hierarchy, and factual substance over resume-page stacking.",
+  homeMaintenanceNote: "Updated March 2026.",
   aboutEssay: [
     "I build AI systems meant to survive real usage. My work sits at the intersection of multi-agent orchestration, voice interfaces, document intelligence, computer vision, and the infrastructure that keeps those systems usable after a demo ends.",
     "At SAGE, I work as a Graduate AI Engineer on ReWOO-based agents and low-latency voice experiences for AR professionals. The common thread is bringing live CRM and ERP context into workflows where timing, retrieval quality, and reliability directly affect how useful the system feels.",

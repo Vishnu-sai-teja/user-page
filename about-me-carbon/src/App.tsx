@@ -137,13 +137,11 @@ function HomePage(): JSX.Element {
             <Typography as="p" color="blackOpacity65" textTransform="uppercase" variant="small">
               {siteContent.role} at {siteContent.organization}
             </Typography>
-            <Box maxWidth="12ch">
-              <Typography as="h1" variant="h1-large">
-                {siteContent.name}
-              </Typography>
-            </Box>
-            <Box maxWidth="18ch">
-              <Typography as="p" variant="h3">
+            <Typography as="h1" variant="h1-large">
+              {siteContent.name}
+            </Typography>
+            <Box maxWidth="600px">
+              <Typography as="p" variant="h4">
                 {siteContent.thesis}
               </Typography>
             </Box>
