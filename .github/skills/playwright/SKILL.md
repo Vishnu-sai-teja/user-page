@@ -117,7 +117,7 @@ Advanced test capabilities:
     - Run tests in parallel by default to reduce runtime.
     - Use `test.describe.configure` to control mode where needed.
     - Split large suites into shards or projects for faster CI.
-- **resources/test-features/testa-annotations.md** - Test tags, skipping, and metadata. Use when organizing tests or conditional execution.
+- **resources/test-features/test-annotations.md** - Test tags, skipping, and metadata. Use when organizing tests or conditional execution.
   - Core points:
     - Use `test.skip`, `test.fail`, `test.fixme`, and `test.slow` for control.
     - Tag tests with `@tag` or `{ tag: '@fast' }` for filtering.

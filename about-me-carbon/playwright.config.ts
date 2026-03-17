@@ -1,13 +1,20 @@
 import { defineConfig, devices } from '@playwright/test'
 
+/**
+ * E2E smoke test configuration for the About Me Carbon app.
+ * Runs Chromium only for local review validation; CI can extend to other browsers.
+ */
 export default defineConfig({
-  testDir: './e2e',
+  testDir: './src/tests/e2e',
+  timeout: 30_000,
+  expect: {
+    timeout: 5_000,
+  },
   fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 0,
-  reporter: [['html', { open: 'never' }]],
+  retries: 0,
+  reporter: 'list',
   use: {
-    baseURL: 'http://localhost:4173',
+    baseURL: 'http://localhost:5173',
     trace: 'on-first-retry',
   },
   projects: [
@@ -17,9 +24,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run preview',
-    url: 'http://localhost:4173',
-    reuseExistingServer: !process.env.CI,
-    timeout: 15000,
+    command: 'npm run dev',
+    url: 'http://localhost:5173',
+    reuseExistingServer: true,
+    timeout: 30_000,
   },
 })
