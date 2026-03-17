@@ -1,0 +1,280 @@
+.site-shell {
+  background:
+    radial-gradient(circle at top right, var(--cds-layer-accent-01), transparent 22%),
+    linear-gradient(180deg, var(--cds-background) 0%, #f8f8f8 100%);
+  color: var(--cds-text-primary);
+  min-height: 100vh;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--cds-border-subtle);
+}
+
+.site-header__inner {
+  align-items: center;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 78rem;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.site-main {
+  margin: 0 auto;
+  max-width: 78rem;
+  padding: 5rem 1rem 4rem;
+}
+
+.page {
+  animation: fade-in 180ms ease-out;
+}
+
+.page--home,
+.section-stack {
+  display: grid;
+  gap: 3rem;
+}
+
+.page--reading {
+  display: grid;
+  gap: 4rem;
+}
+
+.hero-grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 1fr);
+  min-height: calc(100vh - 11rem);
+  padding-top: 2rem;
+}
+
+.hero-copy {
+  align-content: start;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.eyebrow,
+.tile-kicker,
+.build-note,
+.panel-note,
+.accordion-meta,
+.table-subtext,
+.contact-list dt {
+  color: var(--cds-text-secondary);
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+.hero-copy h1,
+.page--reading h1,
+.section-heading h1 {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: clamp(3.5rem, 9vw, 6.75rem);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+  margin: 0;
+  max-width: 10ch;
+}
+
+.hero-thesis,
+.project-focus,
+.section-intro {
+  color: var(--cds-text-secondary);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  max-width: 42rem;
+}
+
+.hero-summary,
+.long-form-copy p,
+.orientation-copy p,
+.project-tile p,
+.site-footer p,
+.contact-list dd,
+.detail-list,
+.panel-note {
+  font-size: 1rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.hero-actions,
+.contact-actions,
+.site-footer__links,
+.tag-row,
+.project-meta {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tag-row--compact {
+  gap: 0.5rem;
+}
+
+.orientation-rail {
+  align-content: start;
+  background: color-mix(in srgb, var(--cds-layer-accent-01) 56%, white);
+  border: 1px solid var(--cds-border-subtle);
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.orientation-rail h2,
+.tile-grid h2,
+.tile-grid h3,
+.section-heading h2,
+.empty-state h1 {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.reading-column {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0 auto;
+  max-width: 42rem;
+}
+
+.long-form-copy {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.section-heading {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.section-heading--with-control {
+  align-items: end;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem);
+}
+
+.tile-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.tile-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tile-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tile-grid--projects {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.project-tile {
+  display: grid;
+  gap: 1rem;
+}
+
+.detail-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.detail-list li + li {
+  margin-top: 0.5rem;
+}
+
+.accordion-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.contact-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.contact-list__row {
+  border-top: 1px solid var(--cds-border-subtle);
+  display: grid;
+  gap: 0.25rem;
+  padding-top: 0.75rem;
+}
+
+.empty-state {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+  padding: 2rem;
+}
+
+.section-search {
+  width: 100%;
+}
+
+.table-subtext {
+  margin-top: 0.35rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--cds-border-subtle);
+  margin-top: 5rem;
+}
+
+.site-footer__inner {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 78rem;
+  padding: 1.25rem 1rem 2rem;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-grid,
+  .section-heading--with-control,
+  .tile-grid--three,
+  .tile-grid--two,
+  .tile-grid--projects {
+    grid-template-columns: 1fr;
+  }
+
+  .site-main {
+    padding-top: 6rem;
+  }
+
+  .site-header__inner {
+    align-items: start;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .site-footer__inner {
+    align-items: start;
+    flex-direction: column;
+  }
+}
