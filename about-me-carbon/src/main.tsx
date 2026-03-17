@@ -1,11 +1,7 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import '@carbon/styles/css/styles.css'
-import './App.css'
-import App from './App'
+import React from "react";
+import ReactDOM from "react-dom";
+import "carbon-react/lib/style/fonts.css";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+import App from "./App";
+
+ReactDOM.render(<App />, document.getElementById("root"));

@@ -1,35 +1,32 @@
 {
   "name": "about-me-carbon",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "test": "vitest run --coverage",
-    "test:e2e": "playwright test"
+    "test": "vitest run"
   },
   "dependencies": {
-    "@carbon/icons-react": "^11.60.0",
-    "@carbon/react": "^1.103.0",
-    "@carbon/styles": "^1.102.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "@sage/design-tokens": "^4.0.0",
+    "@sage/design-tokens-fusion": "npm:@sage/design-tokens@17.7.0",
+    "carbon-react": "^133.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.58.2",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^14.6.1",
-    "@types/node": "^24.6.0",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
-    "@vitejs/plugin-react": "^5.1.0",
-    "@vitest/coverage-v8": "^4.0.7",
-    "jsdom": "^26.1.0",
-    "sass": "^1.89.2",
-    "typescript": "^5.9.3",
-    "vite": "^7.1.7",
-    "vitest": "^4.0.7"
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^12.1.5",
+    "@types/react": "^17.0.82",
+    "@types/react-dom": "^17.0.25",
+    "@types/styled-components": "^4.4.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^2.1.8",
+    "jsdom": "^25.0.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.8"
   }
 }

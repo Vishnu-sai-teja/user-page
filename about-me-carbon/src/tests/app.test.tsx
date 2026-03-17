@@ -1,119 +1,121 @@
-import { render, screen, within } from '@testing-library/react'
+import { fireEvent, render, screen, within } from "@testing-library/react";
+import { vi } from "vitest";
 
-import App from '../App'
+import App, { ErrorBoundary } from "../App";
 
-describe('About Me application', () => {
-  it('renders the hero with Vishnu\'s identity and current role', () => {
-    render(<App />)
+/**
+ * Updates the browser hash before rendering so route-specific tests can land on
+ * the exact page state they intend to validate.
+ */
+function setRoute(hash: string): void {
+  window.location.hash = hash;
+}
 
-    expect(
-      screen.getByRole('heading', { name: /Vishnu Sai Teja Nagabandi/i }),
-    ).toBeInTheDocument()
-    expect(screen.getAllByText(/Graduate AI Engineer at SAGE/i)).toHaveLength(2)
-    expect(
-      screen.getByText(/grounded AI systems across multi-agent workflows, voice AI, and document intelligence/i),
-    ).toBeInTheDocument()
-  })
+describe("About Me application", () => {
+  it("renders the home route with Vishnu's identity, thesis, and orientation rail", () => {
+    setRoute("#/");
 
-  it('renders all required page sections', () => {
-    render(<App />)
+    render(<App />);
 
-    expect(
-      screen.getByRole('heading', {
-        name: /Background, interests, and current direction/i,
-      }),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', {
-        name: /Production AI, document systems, and ML infrastructure/i,
-      }),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', {
-        name: /Languages, frameworks, cloud, and libraries/i,
-      }),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', {
-        name: /Representative work across agents, generation, and medical imaging/i,
-      }),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', {
-        name: /Formal grounding in computer science/i,
-      }),
-    ).toBeInTheDocument()
-    expect(
-      screen.getByRole('heading', {
-        name: /Reach out if the work overlaps/i,
-      }),
-    ).toBeInTheDocument()
-  })
+    expect(screen.getByRole("heading", { name: /Vishnu Sai Teja Nagabandi/i })).toBeInTheDocument();
+    expect(screen.getByText(/grounded AI systems where live business context/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /A compact personal site for quick scanning and deeper evaluation/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Read the full story/i })).toHaveAttribute("href", "#/about");
+  });
 
-  it('shows the experience, skills, projects, and education content from the profile', () => {
-    render(<App />)
+  it("renders the about route with narrative, experience, skills, education, and languages", () => {
+    setRoute("#/about");
 
-    expect(screen.getByRole('heading', { name: /SAGE \| Graduate AI Engineer/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /PIBIT \| AI\/ML Engineer/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /AiDash \| Data Science Intern/i })).toBeInTheDocument()
+    render(<App />);
 
-    expect(screen.getByRole('heading', { name: /^Languages$/i })).toBeInTheDocument()
-    expect(screen.getAllByText('LangGraph')).toHaveLength(2)
-    expect(screen.getByText('Azure')).toBeInTheDocument()
+    expect(screen.getByRole("heading", { name: /Applied AI work, shaped by systems thinking/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Experience/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /SAGE \| Graduate AI Engineer/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /PIBIT \| AI\/ML Engineer/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /AiDash \| Data Science Intern/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Technical strengths/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Programming languages/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Education/i })).toBeInTheDocument();
+    expect(screen.getByText(/German \(Novice\)/i)).toBeInTheDocument();
+  });
 
-    expect(screen.getByRole('heading', { name: /Multi-Agent Resume Parser/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /Staffusion/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /Skin Cancer Detection/i })).toBeInTheDocument()
+  it("renders the projects route, filters results, toggles table view, and shows an empty state", () => {
+    setRoute("#/projects");
 
-    expect(
-      screen.getByRole('heading', {
-        name: /Indian Institute of Information Technology, Nagpur/i,
-      }),
-    ).toBeInTheDocument()
-    expect(screen.getByText(/Score: 98.2%/i)).toBeInTheDocument()
-  })
+    render(<App />);
 
-  it('renders sticky navigation anchors for the major sections', () => {
-    render(<App />)
+    expect(screen.getByRole("heading", { name: /Built work across agent orchestration, generation, and model quality/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /Multi-Agent Resume Parser/i })).toBeInTheDocument();
 
-    const nav = screen.getByRole('navigation', { name: /Primary sections/i })
+    fireEvent.change(screen.getByRole("textbox", { name: /Search projects/i }), {
+      target: { value: "Staffusion" }
+    });
 
-    expect(within(nav).getByRole('link', { name: /Summary/i })).toHaveAttribute(
-      'href',
-      '#summary',
-    )
-    expect(within(nav).getByRole('link', { name: /Projects/i })).toHaveAttribute(
-      'href',
-      '#projects',
-    )
-    expect(within(nav).getByRole('link', { name: /Contact/i })).toHaveAttribute(
-      'href',
-      '#contact',
-    )
-  })
+    expect(screen.getByRole("heading", { name: /Staffusion/i })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /Skin Cancer Detection/i })).not.toBeInTheDocument();
 
-  it('provides working contact links and CTA buttons', () => {
-    render(<App />)
+    fireEvent.click(screen.getByText(/Scan table/i));
 
-    expect(screen.getByRole('link', { name: /Email Vishnu/i })).toHaveAttribute(
-      'href',
-      'mailto:vishnusaiteja.3004@gmail.com',
-    )
-    expect(screen.getByRole('link', { name: /^GitHub$/i })).toHaveAttribute(
-      'href',
-      'https://github.com/Vishnu-sai-teja',
-    )
-    expect(screen.getByRole('link', { name: /^LinkedIn$/i })).toHaveAttribute(
-      'href',
-      'https://www.linkedin.com/in/vishnu-sai-teja-nag',
-    )
-    expect(screen.getByRole('link', { name: /kaggle.com\/vishnusaitejan/i })).toHaveAttribute(
-      'href',
-      'https://www.kaggle.com/vishnusaitejan',
-    )
-    expect(screen.getByRole('link', { name: /\+91 8978044062/i })).toHaveAttribute(
-      'href',
-      'tel:+918978044062',
-    )
-  })
-})
+    const projectsTable = screen.getByRole("table");
+
+    expect(projectsTable).toBeInTheDocument();
+    expect(within(projectsTable).getByText(/Generative modeling/i)).toBeInTheDocument();
+
+    fireEvent.change(screen.getByRole("textbox", { name: /Search projects/i }), {
+      target: { value: "nonexistent" }
+    });
+
+    expect(screen.getByText(/No table rows to show/i)).toBeInTheDocument();
+  });
+
+  it("renders a project detail route with the project metadata and back navigation", () => {
+    setRoute("#/projects/multi-agent-resume-parser");
+
+    render(<App />);
+
+    expect(screen.getByRole("heading", { name: /Multi-Agent Resume Parser/i })).toBeInTheDocument();
+    expect(screen.getByText(/user feedback loops for real-time accuracy improvements/i)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Back to projects/i })).toHaveAttribute("href", "#/projects");
+  });
+
+  it("exposes direct contact links on the home route", () => {
+    setRoute("#/");
+
+    render(<App />);
+
+    expect(screen.getByRole("link", { name: /vishnusaiteja.3004@gmail.com/i })).toHaveAttribute(
+      "href",
+      "mailto:vishnusaiteja.3004@gmail.com"
+    );
+    expect(screen.getByRole("link", { name: /^Vishnu-sai-teja$/i })).toHaveAttribute(
+      "href",
+      "https://github.com/Vishnu-sai-teja"
+    );
+    expect(screen.getByRole("link", { name: /^Vishnu Sai Teja N$/i })).toHaveAttribute(
+      "href",
+      "https://www.kaggle.com/vishnusaitejan"
+    );
+  });
+
+  it("shows the error fallback when a child component throws a rendering error", () => {
+    const consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+
+    function ThrowingChild(): JSX.Element {
+      throw new Error("test render error");
+    }
+
+    render(
+      <ErrorBoundary>
+        <ThrowingChild />
+      </ErrorBoundary>
+    );
+
+    expect(screen.getByRole("heading", { name: /Something went wrong/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /vishnusaiteja.3004@gmail.com/i })).toHaveAttribute(
+      "href",
+      "mailto:vishnusaiteja.3004@gmail.com"
+    );
+
+    consoleErrorSpy.mockRestore();
+  });
+});
