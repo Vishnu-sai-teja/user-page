@@ -7,6 +7,7 @@ Purpose:
 - explain who the person is
 - provide context beyond the hero
 - turn biography into a readable story
+- keep resume-style chronology secondary unless it is essential to the argument
 
 Reference structure:
 
@@ -26,4 +27,5 @@ Keep it profile-agnostic:
 
 - do not force chronology
 - do not turn the page into a LinkedIn summary
+- move timelines, dense role cards, and skill inventories to `experience` when they start dominating the page
 - let contradictions, pivots, and personal specificity stay visible if the source material supports them

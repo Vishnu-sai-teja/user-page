@@ -1,7 +1,7 @@
 ---
 name: clean-jira-board
 description: Clean a Jira planning hierarchy after implementation by resolving, archiving, or deleting the epic, user stories, and tasks from explicit issue IDs or from the current PRD.
-model: GPT-5.4 (copilot)
+model: GPT-5.3-Codex (copilot)
 tools: [read, search, vscode/askQuestions, local.mcp-bridge-new/mcp]
 ---
 

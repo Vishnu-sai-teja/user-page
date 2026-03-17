@@ -1,121 +1,118 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
-import { vi } from "vitest";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { MemoryRouter } from "react-router-dom";
+import { describe, expect, it } from "vitest";
 
-import App, { ErrorBoundary } from "../App";
+import App, { AboutMeApp } from "../App";
 
 /**
- * Updates the browser hash before rendering so route-specific tests can land on
- * the exact page state they intend to validate.
+ * Renders the routed application from a specific starting route so each test
+ * can validate page behavior without depending on browser history state.
  */
-function setRoute(hash: string): void {
-  window.location.hash = hash;
+function renderRoute(route: string): ReturnType<typeof render> {
+  return render(
+    <MemoryRouter initialEntries={[route]}>
+      <AboutMeApp />
+    </MemoryRouter>
+  );
 }
 
-describe("About Me application", () => {
-  it("renders the home route with Vishnu's identity, thesis, and orientation rail", () => {
-    setRoute("#/");
+describe("AboutMeApp", () => {
+  it("renders the production app wrapper with the GitHub Pages basename", () => {
+    window.history.replaceState({}, "", "/user-page/");
 
     render(<App />);
 
-    expect(screen.getByRole("heading", { name: /Vishnu Sai Teja Nagabandi/i })).toBeInTheDocument();
-    expect(screen.getByText(/grounded AI systems where live business context/i)).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /A compact personal site for quick scanning and deeper evaluation/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Read the full story/i })).toHaveAttribute("href", "#/about");
+    expect(screen.getByRole("heading", { name: /building ai systems that have to work/i })).toBeInTheDocument();
   });
 
-  it("renders the about route with narrative, experience, skills, education, and languages", () => {
-    setRoute("#/about");
+  it("renders the home route and navigates through the hero CTA and primary navigation", async () => {
+    const user = userEvent.setup();
 
-    render(<App />);
+    renderRoute("/");
 
-    expect(screen.getByRole("heading", { name: /Applied AI work, shaped by systems thinking/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Experience/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /SAGE \| Graduate AI Engineer/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /PIBIT \| AI\/ML Engineer/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /AiDash \| Data Science Intern/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Technical strengths/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Programming languages/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Education/i })).toBeInTheDocument();
-    expect(screen.getByText(/German \(Novice\)/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /building ai systems that have to work/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute("aria-current", "page");
+
+    await user.click(screen.getByRole("link", { name: /explore the full profile/i }));
+
+    expect(screen.getByRole("heading", { name: "About" })).toBeInTheDocument();
+
+    await user.click(screen.getByRole("link", { name: "Home" }));
+
+    expect(screen.getByRole("heading", { name: /building ai systems that have to work/i })).toBeInTheDocument();
+
+    await user.click(screen.getByRole("link", { name: "About" }));
+
+    expect(screen.getByRole("heading", { name: "About" })).toBeInTheDocument();
   });
 
-  it("renders the projects route, filters results, toggles table view, and shows an empty state", () => {
-    setRoute("#/projects");
+  it("renders the about route with the narrative, experience timeline, and skills", () => {
+    renderRoute("/about");
 
-    render(<App />);
-
-    expect(screen.getByRole("heading", { name: /Built work across agent orchestration, generation, and model quality/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Multi-Agent Resume Parser/i })).toBeInTheDocument();
-
-    fireEvent.change(screen.getByRole("textbox", { name: /Search projects/i }), {
-      target: { value: "Staffusion" }
-    });
-
-    expect(screen.getByRole("heading", { name: /Staffusion/i })).toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: /Skin Cancer Detection/i })).not.toBeInTheDocument();
-
-    fireEvent.click(screen.getByText(/Scan table/i));
-
-    const projectsTable = screen.getByRole("table");
-
-    expect(projectsTable).toBeInTheDocument();
-    expect(within(projectsTable).getByText(/Generative modeling/i)).toBeInTheDocument();
-
-    fireEvent.change(screen.getByRole("textbox", { name: /Search projects/i }), {
-      target: { value: "nonexistent" }
-    });
-
-    expect(screen.getByText(/No table rows to show/i)).toBeInTheDocument();
+    expect(screen.getByText(/my path into ai engineering/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Experience timeline" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Graduate AI Engineer" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Technical skills" })).toBeInTheDocument();
+    expect(screen.getByText("LangGraph")).toBeInTheDocument();
   });
 
-  it("renders a project detail route with the project metadata and back navigation", () => {
-    setRoute("#/projects/multi-agent-resume-parser");
+  it("filters the projects route and shows the empty state when nothing matches", async () => {
+    const user = userEvent.setup();
 
-    render(<App />);
+    renderRoute("/projects");
 
-    expect(screen.getByRole("heading", { name: /Multi-Agent Resume Parser/i })).toBeInTheDocument();
-    expect(screen.getByText(/user feedback loops for real-time accuracy improvements/i)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Back to projects/i })).toHaveAttribute("href", "#/projects");
+    expect(screen.getByText("Multi-Agent Resume Parser")).toBeInTheDocument();
+    expect(screen.getByText("Staffusion")).toBeInTheDocument();
+    expect(screen.getByText("Skin Cancer Detection")).toBeInTheDocument();
+
+    await user.clear(screen.getByRole("textbox", { name: "Filter projects" }));
+    await user.type(screen.getByRole("textbox", { name: "Filter projects" }), "diffusion");
+
+    expect(screen.getByText("Staffusion")).toBeInTheDocument();
+    expect(screen.queryByText("Multi-Agent Resume Parser")).not.toBeInTheDocument();
+
+    await user.clear(screen.getByRole("textbox", { name: "Filter projects" }));
+    await user.type(screen.getByRole("textbox", { name: "Filter projects" }), "nonexistent stack");
+
+    expect(screen.getByText(/no project matched that search/i)).toBeInTheDocument();
   });
 
-  it("exposes direct contact links on the home route", () => {
-    setRoute("#/");
+  it("renders the recommendations route with books first, movies second, images, and a placeholder for missing artwork", () => {
+    renderRoute("/recommendations");
 
-    render(<App />);
-
-    expect(screen.getByRole("link", { name: /vishnusaiteja.3004@gmail.com/i })).toHaveAttribute(
-      "href",
-      "mailto:vishnusaiteja.3004@gmail.com"
-    );
-    expect(screen.getByRole("link", { name: /^Vishnu-sai-teja$/i })).toHaveAttribute(
-      "href",
-      "https://github.com/Vishnu-sai-teja"
-    );
-    expect(screen.getByRole("link", { name: /^Vishnu Sai Teja N$/i })).toHaveAttribute(
-      "href",
-      "https://www.kaggle.com/vishnusaitejan"
-    );
+    expect(screen.getByRole("heading", { name: "Book Recommendations" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Movie Recommendations" })).toBeInTheDocument();
+    expect(screen.getByText("The Lord of the Rings")).toBeInTheDocument();
+    expect(screen.getByText("Avengers: Endgame")).toBeInTheDocument();
+    expect(screen.getAllByText(/artwork unavailable for/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole("link", { name: "View source" }).length).toBeGreaterThan(0);
+    expect(screen.getByAltText(/the lord of the rings cover art/i)).toBeInTheDocument();
   });
 
-  it("shows the error fallback when a child component throws a rendering error", () => {
-    const consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+  it("renders the contact route and supports the mobile navigation trigger and menu item navigation", async () => {
+    const user = userEvent.setup();
 
-    function ThrowingChild(): JSX.Element {
-      throw new Error("test render error");
-    }
+    renderRoute("/contact");
 
-    render(
-      <ErrorBoundary>
-        <ThrowingChild />
-      </ErrorBoundary>
-    );
-
-    expect(screen.getByRole("heading", { name: /Something went wrong/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /vishnusaiteja.3004@gmail.com/i })).toHaveAttribute(
+    expect(screen.getByRole("heading", { name: /reach out/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "vishnusaiteja.3004@gmail.com" })).toHaveAttribute(
       "href",
       "mailto:vishnusaiteja.3004@gmail.com"
     );
 
-    consoleErrorSpy.mockRestore();
+    await user.click(screen.getByRole("button", { name: "Menu" }));
+
+    await user.click(
+      screen
+        .getAllByRole("button")
+        .find((button) => button.getAttribute("data-element") === "close") as HTMLElement
+    );
+
+    await user.click(screen.getByRole("button", { name: "Menu" }));
+
+    await user.click(screen.getAllByRole("link", { name: "Projects" }).at(-1) as HTMLElement);
+
+    expect(screen.getByRole("heading", { name: "Projects" })).toBeInTheDocument();
   });
 });

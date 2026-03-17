@@ -2,7 +2,7 @@
 name: planner
 description: Reads the About Me problem statement, creates a lightweight PRD, creates the matching Jira epic, user stories, and tasks, and records the Jira hierarchy in the PRD.
 model: Claude Sonnet 4.6 (copilot)
-tools: [execute, read, edit, search, askQuestion, agent, todo, local.mcp-bridge-new/mcp]
+tools: [execute, read, edit, search, vscode/askQuestions, agent, todo, local.mcp-bridge-new/mcp]
 user-invocable: false
 ---
 
@@ -111,7 +111,7 @@ When writing the hierarchy:
 - Use the MCP gateway tool surface `local.mcp-bridge-new/mcp` for every Jira lookup and create action.
 - Create 1 Jira epic in `jira_project_id`.
 - Create 2 Jira user stories under that epic.
-- Create 2 to 5 Jira tasks and attach each task to the appropriate parent story.
+- Create 1 to 2 detailed Jira tasks and attach each task to the appropriate parent story.
 - Ensure issue summaries and descriptions stay aligned with the PRD language and remain product-oriented rather than technical.
 - Capture the created issue keys, titles, and parent relationships for PRD insertion.
 

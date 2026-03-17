@@ -69,6 +69,8 @@ Inspect the selected app path and determine:
 - build command
 - output directory
 - framework and router style
+- whether the app includes a dedicated `/recommendations` route
+- whether recommendation data is fetched at build time or runtime
 - whether static hosting needs route handling changes
 - whether the app already contains GitHub Pages configuration
 
@@ -78,6 +80,7 @@ Look for:
 - framework config such as `vite.config.*`
 - static asset base-path handling
 - router mode such as browser router vs hash router
+- recommendation data files or fetch modules when the app renders recommendation cards
 
 ### 3. Validate locally before deployment
 
@@ -90,6 +93,9 @@ Confirm:
 - build succeeds
 - output directory is known
 - generated assets use a Pages-safe base path
+- the `/recommendations` route is reachable in the built app when that route exists
+- recommendation cards do not depend on secret API keys
+- any generated recommendation JSON or image references are included in the build output
 
 If the build fails, stop deployment work and fix or report the build issue first.
 
@@ -116,6 +122,11 @@ Prepare:
 - the workflow file under `.github/workflows/`
 - any required app config changes for base paths or static routing
 - any Pages-specific static files if needed, such as `.nojekyll` or route fallback assets
+
+If the app includes a recommendations page backed by public metadata APIs:
+- prefer build-time fetching and normalization when the repo already supports generated data artifacts
+- otherwise verify that runtime fetches use public no-key endpoints and tolerate missing remote data
+- ensure the deployed app can open `/recommendations` safely under GitHub Pages routing constraints
 
 Choose the smallest correct deployment strategy for the app instead of forcing one template onto every repo.
 
@@ -153,6 +164,8 @@ Validate:
 - the latest run completed successfully
 - the site URL returns the expected content or redirect chain
 - custom-domain behavior is sane
+- the recommendations route loads when present
+- remote cover and poster images render without mixed-content or path issues
 
 ### 9. Report the final state
 

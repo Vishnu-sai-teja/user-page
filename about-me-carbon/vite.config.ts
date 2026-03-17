@@ -1,28 +1,26 @@
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vitest/config";
+import { defineConfig } from "vite";
 
 /**
- * Configures the About Me application for Vite builds and enforces 100%
- * coverage across the in-scope source files.
+ * Configures Vite for a static React application and applies a strict coverage
+ * gate to the authored runtime code under src.
  */
 export default defineConfig({
-  base: "./",
+  base: "/user-page/",
   plugins: [react()],
   test: {
     environment: "jsdom",
-    globals: true,
     setupFiles: "./src/tests/setup.ts",
-    include: ["src/tests/**/*.test.ts", "src/tests/**/*.test.tsx"],
     coverage: {
       provider: "v8",
       reporter: ["text", "html"],
       include: ["src/**/*.ts", "src/**/*.tsx"],
-      exclude: ["src/main.tsx", "src/tests/**/*"],
+      exclude: ["src/main.tsx", "src/tests/**"],
       thresholds: {
-        lines: 100,
-        functions: 100,
+        statements: 100,
         branches: 100,
-        statements: 100
+        functions: 100,
+        lines: 100
       }
     }
   }

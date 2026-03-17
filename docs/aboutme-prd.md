@@ -2,56 +2,70 @@
 
 ## Title
 
-About Me — Vishnu Sai Teja Nagabandi: Personal Profile Page
+Graduate AI Engineer About Me: Professional Identity Landing Experience for Vishnu Sai Teja Nagabandi
 
 ## Jira Project
 
-- Jira project ID: Pending planner rerun with `jira_project_id`
+- Jira project ID: NAIS
 
 ## Problem Statement
 
-Vishnu Sai Teja Nagabandi is an AI Engineer working in multi-agent systems, voice AI, document intelligence, and ML infrastructure. He currently has no dedicated personal page that communicates who he is, what he does, and why he is worth engaging with. Visitors — recruiters, collaborators, peers, hiring managers — have no single destination to quickly understand his profile, evaluate his work, and decide whether to reach out. The goal is to create a focused About Me experience that tells a coherent story about Vishnu: his identity, his current work, his strengths, and how to connect with him.
+Vishnu Sai Teja Nagabandi is a Graduate AI Engineer with production experience in multi-agent systems, voice AI, document intelligence, computer vision, and ML infrastructure. He does not yet have a personal About Me page that presents him as a credible, distinctive professional. The goal is to build a polished personal page that goes beyond a resume summary — communicating identity, background, strengths, featured work, and personality in a way that feels intentional and rewards both quick scanning and deeper exploration.
+
+The page must answer for any visitor: who Vishnu is, what he currently does, what experience and strengths define him, what work he has done that is worth noticing, and how to reach him.
 
 ## Goals
 
-- Give Vishnu a credible and distinctive online presence that reflects both professional substance and personal identity
-- Help visitors quickly understand who Vishnu is, what he does, and what he brings
-- Surface his most meaningful work and areas of expertise in a way that is easy to scan and rewarding to explore
-- Provide a clear path for visitors to reach out or continue the conversation
+- Give Vishnu a credible and distinctive professional presence
+- Present his identity, current role at SAGE, and graduate AI engineering focus clearly and immediately
+- Showcase his featured projects (Multi-Agent Resume Parser, Staffusion, Skin Cancer Detection) with enough context to be meaningful to both technical and non-technical visitors
+- Include curated recommendations as a personality signal
+- Make contact easy, visible, and low friction
+- Feel more like a living personal website than a static resume
 
 ## Non-Goals
 
-- A full portfolio site with deep case studies or blog publishing
-- A resume replacement or printable CV
-- Integration with live data sources, dashboards, or real-time feeds
-- Content management or self-editing capabilities
-- General-purpose developer showcase unrelated to Vishnu's specific profile
+- This is not a resume PDF or download experience
+- This is not a blog or content publishing platform
+- This does not cover multi-page routing or sub-domain setup beyond the About Me page
+- This does not include a portfolio CMS or dynamic content editing interface
+- Technology stack selection, component choices, and deployment mechanics are out of scope for this PRD
 
 ## Target Audience
 
-- Recruiters and hiring managers evaluating Vishnu for AI/ML engineering roles
-- Collaborators or peers in the AI and multi-agent systems space looking to connect
-- Community members, mentors, or conference contacts who want to learn more after an introduction
-- Clients or partners exploring a potential engagement
+- Recruiters and hiring managers exploring Vishnu's profile
+- Engineers, collaborators, or researchers evaluating technical credibility
+- Peers and community members who want to understand his background and interests
+- Anyone who arrives via a shared link and needs a quick, accurate picture of who Vishnu is
 
 ## User Needs
 
-- Quickly understand Vishnu's current role and professional focus
-- Get a clear sense of his background, domain expertise, and standout strengths
-- Browse representative projects or contributions that demonstrate real capability
-- Find clear, frictionless contact options or next steps
+- Quickly understand Vishnu's name, title, and professional focus without reading the whole page
+- Get a confident understanding of his experience, trajectory, and current work
+- Assess the depth and relevance of his AI/ML skills and tooling familiarity
+- See the actual projects he has built with enough context to judge quality and scope
+- Learn something about Vishnu as a person through his recommendations
+- Find a clear and low-friction way to reach out or continue the conversation
 
 ## Experience Principles
 
-- **Clarity first**: every section should be immediately readable; no jargon walls or generic placeholder copy
-- **Story over list**: content should feel like a coherent narrative, not a resume dump
-- **Scannable and deep**: structured so a visitor can grasp the profile in 30 seconds and find more if they want it
-- **Authentic voice**: the page should feel specifically like Vishnu, not a generic engineer template
-- **Confident, not inflated**: highlight real work and real strengths without overselling
+- Clarity first: every section should be scannable at a glance; a visitor should leave with a strong impression even if they only spend 30 seconds
+- Specific over generic: avoid template-feel language; every statement should reflect Vishnu's actual work and identity
+- Narrative flow: the page should tell a coherent story from identity → experience → work → personality → contact
+- Intentional personality: recommendations and personal touches should feel curated, not decorative
+- Confidence without inflation: present strengths confidently but let the work speak for itself
+- Reward deeper exploration: offer enough detail that a visitor who reads more comes away more impressed, not more overwhelmed
 
 ## Scope Summary
 
-A single-page About Me experience covering: a strong introductory identity section, a personal summary with current focus and background, a section on professional experience, a skills and strengths section, a projects and contributions section, and clear contact information. Supporting content such as personal principles or curated highlights may be added where they help the page feel more alive.
+The About Me page must include:
+
+1. **Hero/Intro section** — name, title (Graduate AI Engineer), role tagline, and an opening professional summary (2–3 sentences covering background, current direction at SAGE, and domain focus)
+2. **Experience section** — chronological roles at SAGE, PIBIT, and AiDash, presented as impact-oriented highlights rather than duty lists
+3. **Skills section** — technical capabilities organized by category (languages, frameworks, libraries, cloud) to signal depth and breadth
+4. **Projects section** — three featured AI/ML projects: Multi-Agent Resume Parser, Staffusion, and Skin Cancer Detection, each with problem, approach, and outcome framing
+5. **Recommendations section** — curated books and movies as a genuine personality window, not filler
+6. **Contact section** — clear call to action to reach out via email, signalling openness to recruiters, collaborators, and peers
 
 ## Delivery Hierarchy
 
@@ -59,17 +73,17 @@ A single-page About Me experience covering: a strong introductory identity secti
 
 #### Objective
 
-Ship a complete, polished About Me page for Vishnu Sai Teja Nagabandi that gives visitors a credible, memorable, and engaging view of his identity, work, and expertise.
+Design and deliver a complete, polished About Me page for Vishnu Sai Teja Nagabandi that functions as a credible professional presence — covering identity, experience, AI/ML projects, recommendations, and contact.
 
 #### Outcome
 
-Visitors can arrive at a single page, immediately understand Vishnu's role and value, explore his work and strengths at their own depth, and leave with a clear way to follow up.
+A visitor arriving at the page comes away with a confident, specific, and memorable picture of who Vishnu is, what he has built, and how to reach him.
 
 #### Jira Record
 
-- Issue type: Pending Jira sync
-- Issue key: Pending Jira sync
-- Issue title: Pending Jira sync
+- Issue type: Master Epic (Jira mapped "Epic" type to "Master Epic" in the NAIS project hierarchy; adapted accordingly — see Assumptions section)
+- Issue key: NAIS-89
+- Issue title: Graduate AI Engineer About Me: Professional Identity Landing Experience for Vishnu Nagabandi
 
 ---
 
@@ -77,40 +91,36 @@ Visitors can arrive at a single page, immediately understand Vishnu's role and v
 
 #### Description
 
-As a recruiter or collaborator visiting the page for the first time, I want to quickly understand who Vishnu is, what he does, and what makes him distinctive, so I can decide in under a minute whether he is relevant to my needs.
+When a visitor lands on the About Me page, they can immediately understand who Vishnu is — a Graduate AI Engineer focused on multi-agent systems, voice AI, and document intelligence. The page opens with a strong identity statement, a concise professional summary covering his background and current direction at SAGE, and clearly presented experience timeline and technical skills.
 
 #### Value
 
-Reduces time-to-understanding for first-time visitors and ensures the page makes a strong, immediate first impression.
+A visitor should be able to scan this portion of the page in under a minute and leave with a confident picture of Vishnu's professional identity.
 
 #### Jira Record
 
-- Issue type: Pending Jira sync
-- Issue key: Pending Jira sync
-- Issue title: Pending Jira sync
-- Parent epic: Pending Jira sync
+- Issue type: Story
+- Issue key: NAIS-90
+- Issue title: Visitor can quickly understand who Vishnu is, what he does, and what makes him credible as a Graduate AI Engineer
+- Parent epic: NAIS-89 (linked via FeatureLink "is part of")
 
 ##### Task 1.1.1
 
-Write and structure the introductory section: name, current role, current organization, and a one- to two-sentence positioning statement that captures Vishnu's focus and differentiation in AI engineering.
-
 ###### Jira Record
 
-- Issue type: Pending Jira sync
-- Issue key: Pending Jira sync
-- Issue title: Pending Jira sync
-- Parent story: Pending Jira sync
+- Issue type: Sub-task
+- Issue key: NAIS-92
+- Issue title: Define hero section content: identity statement, role tagline, and opening summary narrative
+- Parent story: NAIS-90
 
 ##### Task 1.1.2
 
-Write the personal summary section: a short narrative covering his background, the domains he works in (multi-agent systems, voice AI, document intelligence, computer vision, ML infrastructure), and his current direction as a Graduate AI Engineer at SAGE.
-
 ###### Jira Record
 
-- Issue type: Pending Jira sync
-- Issue key: Pending Jira sync
-- Issue title: Pending Jira sync
-- Parent story: Pending Jira sync
+- Issue type: Sub-task
+- Issue key: NAIS-93
+- Issue title: Define experience timeline and technical skills section content hierarchy and emphasis
+- Parent story: NAIS-90
 
 ---
 
@@ -118,68 +128,66 @@ Write the personal summary section: a short narrative covering his background, t
 
 #### Description
 
-As a visitor who wants to go deeper, I want to explore Vishnu's experience, skills, and projects so I can assess his capabilities and find a way to connect with him.
+A visitor who wants to go deeper can explore Vishnu's three featured AI/ML projects (Multi-Agent Resume Parser, Staffusion, and Skin Cancer Detection), browse his curated book and movie recommendations as a window into his personality, and find a clear, low-friction way to reach out or continue the conversation.
 
 #### Value
 
-Builds trust with visitors doing more thorough evaluation, and provides a clear call-to-action so no opportunity to connect is lost.
+Visitors can assess Vishnu's hands-on AI work, get a genuine sense of his character through his recommendations, and reach out without friction.
 
 #### Jira Record
 
-- Issue type: Pending Jira sync
-- Issue key: Pending Jira sync
-- Issue title: Pending Jira sync
-- Parent epic: Pending Jira sync
+- Issue type: Story
+- Issue key: NAIS-91
+- Issue title: Visitor can explore Vishnu's featured AI projects and recommendations and find a clear path to reach out
+- Parent epic: NAIS-89 (linked via FeatureLink "is part of")
 
 ##### Task 1.2.1
 
-Write and structure the experience section (current role and responsibilities), the skills and expertise section (core AI/ML strengths and tooling areas), and the projects section (two to four representative contributions or builds).
-
 ###### Jira Record
 
-- Issue type: Pending Jira sync
-- Issue key: Pending Jira sync
-- Issue title: Pending Jira sync
-- Parent story: Pending Jira sync
+- Issue type: Sub-task
+- Issue key: NAIS-94
+- Issue title: Define projects section content showcasing Multi-Agent Resume Parser, Staffusion, and Skin Cancer Detection
+- Parent story: NAIS-91
 
 ##### Task 1.2.2
 
-Write the contact section: include the clearest available channels for reaching Vishnu and a brief closing statement that invites follow-up.
-
 ###### Jira Record
 
-- Issue type: Pending Jira sync
-- Issue key: Pending Jira sync
-- Issue title: Pending Jira sync
-- Parent story: Pending Jira sync
-
-## Jira Delivery Summary
-
-- Epic: Pending Jira sync
-- User stories: Pending Jira sync
-- Tasks: Pending Jira sync
-- Notes: Planner must replace these placeholders after Jira issues are created.
+- Issue type: Sub-task
+- Issue key: NAIS-95
+- Issue title: Define recommendations and contact sections with personality framing and clear outreach pathways
+- Parent story: NAIS-91
 
 ---
 
+## Jira Delivery Summary
+
+- Epic: NAIS-89 (Master Epic)
+- User stories: NAIS-90, NAIS-91
+- Tasks: NAIS-92, NAIS-93, NAIS-94, NAIS-95 (4 Sub-tasks total)
+- Notes: The NAIS Jira project maps the "Epic" issue type to "Master Epic" in its hierarchy. Stories were linked to the Master Epic using the FeatureLink relationship ("is part of / is broken into"). Tasks were created as Sub-tasks with direct parent links to their respective stories. This is the closest valid structure and faithfully represents the intended Epic → Story → Task delivery hierarchy.
+
 ## Acceptance Criteria
 
-- The page has a clear introductory identity section with Vishnu's name, role, and a positioning statement
-- The summary section communicates his background, current focus, and domain in plain language
-- The experience section covers his current role at SAGE and meaningful responsibilities or contributions
-- The skills section reflects his genuine areas of expertise without being a generic keyword list
-- The projects section surfaces at least two to four tangible pieces of work or contributions
-- The contact section provides a frictionless path for visitors to reach out
-- A visitor with no prior knowledge can read the page and clearly answer: who is Vishnu, what does he do, what has he built, and how do I reach him
-- The page feels personal and intentional, not templated or generic
+- The page opens with a clear identity statement that names Vishnu, his title, and his domain focus within the first visible viewport
+- A visitor with no prior knowledge of Vishnu can accurately describe his role, employer, and key AI skills after reading the hero and summary sections
+- The experience section covers all three roles (SAGE, PIBIT, AiDash) and communicates what Vishnu actually built at each, not just job titles
+- The skills section is organized by category and includes Python, PyTorch, LangChain, LangGraph, FastAPI, Docker, AWS, and Azure at minimum
+- All three featured projects (Multi-Agent Resume Parser, Staffusion, Skin Cancer Detection) are present with problem, approach, and outcome context
+- The recommendations section presents both book and movie picks in a way that reads as intentional personality, not boilerplate
+- The contact section includes Vishnu's email and a visible call to action inviting outreach from recruiters, collaborators, and peers
+- The page is readable and well-structured on a standard desktop browser
+- The page does not feel like a generic resume template; it reads like a crafted personal profile
 
 ## Assumptions and Open Questions
 
-- **Assumption**: The content areas defined (intro, summary, experience, skills, projects, contact) cover the minimum viable page; additional sections (principles, highlights, writing) may be added at builder discretion if content supports them
-- **Assumption**: Project descriptions and experience details will be sourced from `docs/user-profile.md` and any supporting materials available at build time
-- **Open question**: Are there specific projects or contributions Vishnu wants foregrounded over others?
-- **Open question**: Is there a preferred tone (formal, conversational, technical) that should guide copy decisions?
-- **Open question**: Should the page include a downloadable resume or link to a resume document?
+- **Assumption:** The user profile at `docs/user-profile.md` is current and approved as the canonical source of content for this About Me page.
+- **Assumption:** GitHub links for projects (Multi-Agent Resume Parser, Staffusion) will be provided by Vishnu before the projects section is finalized.
+- **Assumption:** The page is a single-page experience unless a builder agent determines multi-route navigation is clearly needed.
+- **Open question:** Should the recommendations section display cover art or metadata fetched from public APIs (e.g., Open Library), or should it remain a curated list with minimal visual treatment?
+- **Open question:** Is a phone number (+91 8978044062) intended to be visible on the public page, or should contact be limited to email?
+- **Jira hierarchy adaptation:** NAIS does not support standard "Epic" issue type at story-parent level; "Epic" was mapped to "Master Epic" by the project schema. Stories were linked to the Master Epic via FeatureLink. This should be noted in sprint planning so Jira boards are configured to surface the FeatureLink relationship correctly.
 
 ## Deployment Note
 

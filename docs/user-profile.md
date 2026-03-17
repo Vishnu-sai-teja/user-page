@@ -132,6 +132,22 @@ Graduate AI Engineer with experience across multi-agent systems, voice AI, docum
 - Cloud Computing Applied Sciences
 - Machine Learning
 
+## Book Recommendations
+
+1. Sapiens: A Brief History of Humankind
+2. The Lord of the Rings
+3. The Alchemist
+4. The Man Who Knew Infinity
+5. The Adventures of Sherlock Holmes
+
+## Movie Recommendations
+
+1. Avengers: Endgame
+2. Avengers: Infinity War
+3. Black Panther: Wakanda Forever
+4. Inception
+5. Game of Thrones (TV Series)
+
 ## Languages
 
 - English
