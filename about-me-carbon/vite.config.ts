@@ -1,27 +1,45 @@
-import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+/// <reference types="vitest" />
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-/**
- * Configures Vite for a static React application and applies a strict coverage
- * gate to the authored runtime code under src.
- */
+const securityHeaders = {
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'DENY',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+}
+
+// https://vite.dev/config/
 export default defineConfig({
-  base: "/user-page/",
+  base: '/user-page/',
   plugins: [react()],
+  server: {
+    headers: securityHeaders,
+  },
+  preview: {
+    headers: securityHeaders,
+  },
   test: {
-    environment: "jsdom",
-    setupFiles: "./src/tests/setup.ts",
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/tests/setup.ts'],
     coverage: {
-      provider: "v8",
-      reporter: ["text", "html"],
-      include: ["src/**/*.ts", "src/**/*.tsx"],
-      exclude: ["src/main.tsx", "src/tests/**"],
+      provider: 'v8',
+      reporter: ['text', 'lcov'],
+      include: ['src/**/*.{ts,tsx}'],
+      exclude: [
+        'src/scripts/**',
+        'src/tests/**',
+        'src/main.tsx',
+        'src/types/**',
+        'src/data/**',
+      ],
       thresholds: {
-        statements: 100,
-        branches: 100,
+        lines: 100,
         functions: 100,
-        lines: 100
-      }
-    }
-  }
-});
+        branches: 100,
+        statements: 100,
+      },
+    },
+  },
+})
